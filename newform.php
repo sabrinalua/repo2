@@ -37,6 +37,14 @@
 		</div>
 </div>
 
+<div class="row">
+	<div class="checkbox_fields" style="display:none">
+		<label>Day</label>
+		<?php echo $form->checkBoxList($model, 'day', array('0'=>'Mon','1'=>'Tue', '2'=>'Wed','3'=>'Thu', '4'=>'Fri','5'=>'Sat', '6'=>'Sun'), array('type'=>'text'));?>
+	</div>
+	
+</div>
+
 <div class="row buttons">
 		<?php echo CHtml::submitButton('Save'); ?>
 </div>
@@ -62,15 +70,17 @@
     
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').remove(); x--;
-    })
+    });
 
     $('.multi-button').click(function(){
 		$('.input_fields_wrap').toggle();
+		$('.checkbox_fields').hide();
 			return false;
 	});
 
 	$('.recur-button').click(function(){
 		$('.input_fields_wrap').hide();
+		$('.checkbox_fields').toggle();
 			return false;
 	});
 });
